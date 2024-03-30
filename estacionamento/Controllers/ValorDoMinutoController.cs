@@ -20,4 +20,20 @@ public class ValorDoMinutoController : Controller
         return View(valores);
     }
 
+    [HttpGet("/novo")]
+    public IActionResult Novo()
+    {
+        return View();
+    }
+
+    [HttpPost("/Criar")]
+    public IActionResult Criar([FromForm] ValorDoMinuto valorDoMinuto)
+    {
+        var sql = "INSERT INTO valores_por_hora (Minutos, Valor) VALUES (@Minutos, @Valor)";
+        var result = _connection.Execute(sql, valorDoMinuto);
+
+
+        return Redirect("/valores");
+    }
+
 }
