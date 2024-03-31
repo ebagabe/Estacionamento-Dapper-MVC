@@ -16,7 +16,9 @@
                 <th>Id</th>
                 <th>Minutos</th>
                 <th>Valor</th>
-                <th>Valor</th>
+                <th></th>
+                <th></th>
+
             </tr>
         </thead>
 
@@ -27,6 +29,9 @@
                     <td>@item.Id</td>
                     <td>@item.Minutos</td>
                     <td>@item.Valor.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
+                    <td>
+                        <a class="btn btn-warning" asp-route-id="@item.Id" asp-action="Editar" asp-controller="ValorDoMinuto">Alterar</a>
+                    </td>
                     <td>
                         <form onsubmit="return confirm('Confirma?')" asp-route-id="@item.Id" asp-action="Apagar" asp-controller="ValorDoMinuto" method="post">
                             <input type="hidden" name="id" value="@item.Id">
