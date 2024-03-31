@@ -36,4 +36,13 @@ public class ValorDoMinutoController : Controller
         return Redirect("/valores");
     }
 
+    [HttpPost("/{id}/apagar")]
+    public IActionResult Apagar([FromRoute] int id)
+    {
+        var sql = "DELETE FROM valores_por_hora WHERE id = @id";
+        _connection.Execute(sql, new ValorDoMinuto {Id = id});
+
+
+        return Redirect("/valores");
+    }
 }
